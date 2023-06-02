@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      background-color: #000;
+    }
+    /* Стили для следа */
+    .bubble {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #a8ffb4;
+      animation: leave 1s ease forwards;
+    }
+
+    @keyframes leave {
+      from {
+        width: 50px;
+        height: 50px;
+      }
+      to {
+        width: 0px;
+        height: 0px;
+      }
+    }
+  </style>
+  <title>Cursor Trail</title>
+</head>
+<body>
+  <script>
+    document.addEventListener('mousemove', function(event) {
+      var bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.left = event.clientX - 25 + 'px';
+      bubble.style.top = event.clientY - 25 + 'px';
+      document.body.appendChild(bubble);
+      setTimeout(function() {
+        bubble.remove();
+      }, 200);
+    });
+  </script>
+</body>
+</html>
